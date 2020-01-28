@@ -1,16 +1,23 @@
-/*export class CricketPlayer {
-  name: string;
+export class CricketPlayer {
+  playerId: number;
+  firstName: string;
+  lastName: string;
   position: number;
-  team?: string;
+  teamId?: string;
   bibs: number;
+  wins: number;
+  losses: number;
 
-  constructor(name, position, team?) {
-    this.name = name;
+  constructor(firstName, lastName, position, team?) {
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.position = position;
-    this.team = team;
+    this.teamId = team;
     this.bibs = 0;
+    this.wins = 0;
+    this.losses = 0;
   }
 
 
 
-}*/
+}

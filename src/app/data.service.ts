@@ -16,7 +16,13 @@ export class DataService {
     {id: 8, teamId: 4, firstName: 'Lance', lastName: 'McElhinney', email: 'linneymc@yahoo.com'},
     {id: 9, teamId: 4, firstName: 'Greg', lastName: 'Zettler', email: 'grzettler@gmail.com'},
     {id: 10, teamId: 5, firstName: 'RJ', lastName: 'Miller', email: 'arejaymils@gmail.com'},
-    {id: 11, teamId: 5, firstName: 'Cole', lastName: 'Duke', email: 'cgdjlbbcd@gmail.com'}]
+    {id: 11, teamId: 5, firstName: 'Cole', lastName: 'Duke', email: 'cgdjlbbcd@gmail.com'}];
+
+  teams = [{teamId: 1, teamName: 'The Donnybrooks', playerId1: 1, playerId2: 2},
+  {teamId: 2, teamName: 'Merica', playerId1: 4, playerId2: 5},
+  {teamId: 3, teamName: 'Mounties', playerId1: 6, playerId2: 7},
+  {teamId: 4, teamName: 'Bumblebees', playerId1: 10, playerId2: 11},
+    {teamId: 5, teamName: 'Alan Evans', playerId1: 8, playerId2: 9}];
 
 
   constructor() { }
@@ -24,7 +30,13 @@ export class DataService {
   public getPlayers(): Array<{id, teamId, firstName, lastName, email}> {
     return this.players;
   }
+  public getTeams(): Array<{teamId, teamName, playerId1, playerId2}> {
+    return this.teams;
+  }
   public addPlayer(player: {id, teamId, firstName, lastName, email}) {
     this.players.push(player);
   }
+  //getPlayerById(playId){return player}
+  //getTeamById(teamId){return team}
+  //getPlayersByTeamId(teamId){return players}
 }

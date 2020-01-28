@@ -1,8 +1,5 @@
-/*
-import {CricketPlayer} from './cricket-player';
-
 export class CricketGame {
-  player: CricketPlayer;
+  playerId: number;
   bibs: number;
   twentyClosed: boolean;
   nineteenClosed: boolean;
@@ -11,6 +8,8 @@ export class CricketGame {
   sixteenClosed: boolean;
   fifteenClosed: boolean;
   bullseyeClosed: boolean;
-
+  redemption: boolean;
+  isActive: boolean;
+  isWinner: boolean;
 }
-*/
+
