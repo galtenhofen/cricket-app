@@ -1,0 +1,92 @@
+#start-button{
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hit-btn{
+
+  margin-bottom: 10px;
+}
+
+#miss-button{
+  borger-radius: 10px!important;
+  font-size:24px;
+  width: 50%!important;
+}
+
+#next-button{
+  margin-top: 30px;
+  margin-left: 5px;
+}
+
+#prev-button{
+  margin-top: 30px;
+  margin-right: 5px;
+}
+
+.round-bar{
+  grid-area: infobar
+}
+
+.col-head-left{
+  grid-area: colhead1
+}
+
+.col-head-middle{
+  grid-area: colhead2
+}
+
+.col-head-right{
+  grid-area: colhead3
+}
+
+.col-body-right{
+  grid-area: colarea3;
+  text-align: center;
+}
+
+.col-body-left{
+  grid-area: colarea1;
+  text-align: center;
+}
+
+.col-body-middle{
+  grid-area: colarea2;
+  text-align: center;
+}
+
+.container-fluid{
+  display:grid;
+  grid-template-columns: 30% 30% auto;
+  grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+  grid-template-areas:
+    "infobar infobar infobar"
+    "colhead1 colhead2 colhead3"
+    "colarea1 colarea2 colarea3"
+    "colarea1 colarea2 colarea3"
+    "colarea1 colarea2 colarea3"
+    "colarea1 colarea2 colarea3"
+    "colarea1 colarea2 colarea3"
+    "colarea1 colarea2 colarea3"
+    "colarea1 colarea2 colarea3"
+    "colarea1 colarea2 colarea3"
+;
+
+}
+
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 0px;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px!important;
+  border-bottom-left-radius: 35px!important;
+  font-size: 16px;
+  text-align: center;
+}
+
+.btn-group-vertical{
+  align-items: center!important;
+}

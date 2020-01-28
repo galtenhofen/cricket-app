@@ -1,0 +1,40 @@
+<div class="container-fluid" style="height: 100%; margin-top: 70px; margin-bottom: 70px; text-align:center;">
+ <div class="col-body-middle"> <button *ngIf="gameStarted===false" class="btn btn-lg btn-primary" id="start-button" (click)="start($event)" > Start Game </button></div>
+
+  <div class="round-bar"><H2 *ngIf="gameStarted===true" >Round: {{ roundNumber }}</H2></div>
+
+  <div class="col-head-left" *ngIf="gameStarted===true"><H1>Team 1</H1></div>
+  <div class="col-head-middle" *ngIf="gameStarted===true"><H1>Team 2</H1></div>
+
+  <div class="col-head-right">
+    <H1 *ngIf="gameStarted===true && moreDarts" >{{ currentPlayer }}: Throw {{ throwNum }} </H1>
+    <H2 *ngIf="gameStarted===true && !moreDarts" >Hit Next Player to Continue </H2>
+    <!--<H2 *ngIf="gameStarted===true && moreDarts" ></H2>-->
+  </div>
+
+
+
+
+
+
+  <div class="col-body-right">
+  <div class="btn-group-vertical btn-group-ctr">
+    <button *ngIf="gameStarted===true" class="btn btn-lg btn-warning hit-btn" id="miss-button" (click)="onMiss($event)" [disabled]="!moreDarts" > MISS! </button>
+  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="20-button" (click)="onHit20($event)" [disabled]="!moreDarts"> 20 </button>
+  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="19-button" (click)="onHit19($event)" [disabled]="!moreDarts"> 19 </button>
+  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="18-button" (click)="onHit18($event)" [disabled]="!moreDarts"> 18 </button>
+  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="17-button" (click)="onHit17($event)" [disabled]="!moreDarts" > 17 </button>
+  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="16-button" (click)="onHit16($event)" [disabled]="!moreDarts"> 16 </button>
+  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="15-button" (click)="onHit15($event)" [disabled]="!moreDarts"> 15 </button>
+  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="bull-button" (click)="onHitBullseye($event)" [disabled]="!moreDarts"> BULLSEYE </button>
+    <div class="btn-group">
+      <button *ngIf="gameStarted===true" class="btn btn-lg btn-danger hit-btn" id="prev-button" (click)="onPrevPlayer($event)" > PREV PLAYER</button>
+    <button *ngIf="gameStarted===true" class="btn btn-lg btn-danger hit-btn" id="next-button" (click)="onNextPlayer($event)" > NEXT PLAYER</button>
+    </div>
+  </div>
+  </div>
+
+<!--  <div *ngIf="gameStarted===true"> Dart 1: {{dartOne}}</div>
+  <div *ngIf="gameStarted===true"> Dart 2: {{dartTwo}}</div>
+  <div *ngIf="gameStarted===true"> Dart 3: {{dartThree}}</div>-->
+</div>

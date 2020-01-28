@@ -1,0 +1,41 @@
+<div class="container" style="margin-top: 70px; margin-bottom: 70px;">
+
+  <div class="row">
+
+    <div class="col-sm-8 offset-sm-2">
+
+      <div class="info-form">
+        <form>
+          <div class="form-group">
+            <label for="id">ID</label>
+            <input [(ngModel)]="player.id" type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Enter ID">
+            <small id="idHelp" class="form-text text-muted">Enter your player's ID</small>
+
+            <label for="first-name">First Name</label>
+            <input [(ngModel)]="player.firstName" type="text" name="name" class="form-control" id="first-name" aria-describedby="nameHelp" placeholder="Enter first name">
+            <small id="firstNameHelp" class="form-text text-muted">Enter player's first name</small>
+
+            <label for="last-name">last Name</label>
+            <input [(ngModel)]="player.lastName" type="text" name="name" class="form-control" id="last-name" aria-describedby="nameHelp" placeholder="Enter last name">
+            <small id="lastNameHelp" class="form-text text-muted">Enter your player's last name</small>
+
+            <label for="email">player Email</label>
+            <input [(ngModel)]="player.email" type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+              placeholder="Enter your email">
+            <small id="emailHelp" class="form-text text-muted">Enter your player's email</small>
+
+            <label for="description">player Description</label>
+            <textarea [(ngModel)]="player.description" name="description" class="form-control" id="description" aria-describedby="descHelp">
+                      </textarea>
+            <small id="descHelp" class="form-text text-muted">Enter your player's description</small>
+
+          </div>
+        </form>
+        <button class="btn btn-primary" (click)="addPlayer()">Create player</button>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
