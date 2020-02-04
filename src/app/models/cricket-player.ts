@@ -2,16 +2,15 @@ export class CricketPlayer {
   playerId: number;
   firstName: string;
   lastName: string;
-  position: number;
   teamId?: string;
   bibs: number;
   wins: number;
   losses: number;
 
-  constructor(firstName, lastName, position, team?) {
+  constructor(firstName, lastName, playerId, team?) {
+    this.playerId = playerId;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.position = position;
     this.teamId = team;
     this.bibs = 0;
     this.wins = 0;

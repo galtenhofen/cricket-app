@@ -13,20 +13,87 @@
   </div>
 
 
+  <div class="col-body-left">
+    <div class="btn-group-vertical btn-group-ctr">
+      <div *ngIf="gameStarted===true" class="btn-group-vertical btn-group-ctr">
+        <div class="container">
+        <button [hidden]="twenties!=1" class="btn btn-xl btn-primary hit-btn btn-circle" id="one-20" [disabled]> 20-1 </button>
+        <button [hidden]="twenties!=2" class="btn btn-xl btn-primary hit-btn btn-circle" id="two-20" [disabled]> 20-2 </button>
+        <button [hidden]="twenties<3" class="btn btn-xl btn-primary hit-btn btn-circle" id="three-20" [disabled]> 20-3 </button>
+        </div>
+        <div class="container">
+        <button [hidden]="nineteens!=1" class="btn btn-xl btn-primary hit-btn btn-circle" id="one-19" [disabled]> 19-1 </button>
+        <button [hidden]="nineteens!=2" class="btn btn-xl btn-primary hit-btn btn-circle" id="two-19" [disabled]> 19-2 </button>
+        <button [hidden]="nineteens<3" class="btn btn-xl btn-primary hit-btn btn-circle" id="three-19" [disabled]> 19-3 </button>
+        </div>
+        <div class="container">
+        <button [hidden]="eighteens!=1" class="btn btn-xl btn-primary hit-btn btn-circle" id="one-18" [disabled]> 18-1 </button>
+        <button [hidden]="eighteens!=2" class="btn btn-xl btn-primary hit-btn btn-circle" id="two-18" [disabled]> 18-2 </button>
+        <button [hidden]="eighteens<3" class="btn btn-xl btn-primary hit-btn btn-circle" id="three-18" [disabled]> 18-3 </button>
+        </div>
+          <!--
+
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="19-button" (click)="onHit19($event)" [disabled]> 19 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="18-button" (click)="onHit18($event)" [disabled]> 18 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="17-button" (click)="onHit17($event)" [disabled] > 17 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="16-button" (click)="onHit16($event)" [disabled]> 16 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="15-button" (click)="onHit15($event)" [disabled]> 15 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="bull-button" (click)="onHitBullseye($event)" > BULLSEYE </button>
 
 
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="19-button-2" (click)="onHit19($event)" [disabled]="!moreDarts"> Double 19 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="18-button-2" (click)="onHit18($event)" [disabled]="!moreDarts"> Double 18 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="17-button-2" (click)="onHit17($event)" [disabled]="!moreDarts" > Double 17 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="16-button-2" (click)="onHit16($event)" [disabled]="!moreDarts"> Double 16 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="15-button-2" (click)="onHit15($event)" [disabled]="!moreDarts"> Double 15 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="bull-button-2" (click)="onHitBullseye($event)" [disabled]="!moreDarts"> Double BULLSEYE </button>
+
+
+
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="19-button-3" (click)="onHit19($event)" [disabled]="!moreDarts"> Triple 19 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="18-button-3" (click)="onHit18($event)" [disabled]="!moreDarts"> Triple 18 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="17-button-3" (click)="onHit17($event)" [disabled]="!moreDarts" > Triple 17 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="16-button-3" (click)="onHit16($event)" [disabled]="!moreDarts"> Triple 16 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="15-button-3" (click)="onHit15($event)" [disabled]="!moreDarts"> Triple 15 </button>
+        <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="bull-button-3" (click)="onHitBullseye($event)" [disabled]="!moreDarts"> Triple BULLSEYE </button>
+     --> </div>
+    </div>
+  </div>
+
+  <div class="col-body-middle">
+  </div>
 
 
   <div class="col-body-right">
   <div class="btn-group-vertical btn-group-ctr">
     <button *ngIf="gameStarted===true" class="btn btn-lg btn-warning hit-btn" id="miss-button" (click)="onMiss($event)" [disabled]="!moreDarts" > MISS! </button>
-  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="20-button" (click)="onHit20($event)" [disabled]="!moreDarts"> 20 </button>
+    <div *ngIf="showSingles===true" class="btn-group-vertical btn-group-ctr">
+  <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="20-button" (click)="onHit20($event)" value=20 [disabled]="!moreDarts"> 20 </button>
   <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="19-button" (click)="onHit19($event)" [disabled]="!moreDarts"> 19 </button>
   <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="18-button" (click)="onHit18($event)" [disabled]="!moreDarts"> 18 </button>
   <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="17-button" (click)="onHit17($event)" [disabled]="!moreDarts" > 17 </button>
   <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="16-button" (click)="onHit16($event)" [disabled]="!moreDarts"> 16 </button>
   <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="15-button" (click)="onHit15($event)" [disabled]="!moreDarts"> 15 </button>
   <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="bull-button" (click)="onHitBullseye($event)" [disabled]="!moreDarts"> BULLSEYE </button>
+    </div>
+    <div *ngIf="showDoubles===true" class="btn-group-vertical btn-group-ctr">
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="20-button-2" (click)="onHit20($event)" [disabled]="!moreDarts"> Double 20 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="19-button-2" (click)="onHit19($event)" [disabled]="!moreDarts"> Double 19 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="18-button-2" (click)="onHit18($event)" [disabled]="!moreDarts"> Double 18 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="17-button-2" (click)="onHit17($event)" [disabled]="!moreDarts" > Double 17 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="16-button-2" (click)="onHit16($event)" [disabled]="!moreDarts"> Double 16 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="15-button-2" (click)="onHit15($event)" [disabled]="!moreDarts"> Double 15 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="bull-button-2" (click)="onHitBullseye($event)" [disabled]="!moreDarts"> Double BULLSEYE </button>
+    </div>
+    <div *ngIf="showTriples===true" class="btn-group-vertical btn-group-ctr">
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="20-button-3" (click)="onHit20($event)" [disabled]="!moreDarts"> Triple 20 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="19-button-3" (click)="onHit19($event)" [disabled]="!moreDarts"> Triple 19 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="18-button-3" (click)="onHit18($event)" [disabled]="!moreDarts"> Triple 18 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="17-button-3" (click)="onHit17($event)" [disabled]="!moreDarts" > Triple 17 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="16-button-3" (click)="onHit16($event)" [disabled]="!moreDarts"> Triple 16 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="15-button-3" (click)="onHit15($event)" [disabled]="!moreDarts"> Triple 15 </button>
+      <button *ngIf="gameStarted===true" class="btn btn-xl btn-primary hit-btn btn-circle" id="bull-button-3" (click)="onHitBullseye($event)" [disabled]="!moreDarts"> Triple BULLSEYE </button>
+    </div>
     <div class="btn-group">
       <button *ngIf="gameStarted===true" class="btn btn-lg btn-danger hit-btn" id="prev-button" (click)="onPrevPlayer($event)" > PREV PLAYER</button>
     <button *ngIf="gameStarted===true" class="btn btn-lg btn-danger hit-btn" id="next-button" (click)="onNextPlayer($event)" > NEXT PLAYER</button>
