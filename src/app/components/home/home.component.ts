@@ -88,6 +88,8 @@ export class HomeComponent implements OnInit {
 
    this.playerList = ['Gabe', 'Paul', 'Luke', 'Bryan'];
     this.currentPlayer = this.playerList[this.playerIterator];
+    console.log('teamOne: ', teamOne);
+    console.log('playerOne: ', playerOne);
   }
 
   onButtonPress(value) {
@@ -95,6 +97,11 @@ export class HomeComponent implements OnInit {
   }
   start(event) {
     this.gameStarted = true;
+    this.setOrder();
+  }
+
+  setOrder(){
+
   }
 
   makeSingle(){
@@ -147,57 +154,77 @@ export class HomeComponent implements OnInit {
       this.throwNum = 1;
    // }
 }
-  onHit20(event) {
-    if (this.throwNum <= 3 && this.twentyClosed === false) {
-      this.twenties++;
-      this.addScore(20);
-      if (this.twenties > 2){console.log('You closed the twenties');}
-    }
-    this.processThrow();
+  onHit20(multiplier) {
+      if (this.throwNum <= 3 && this.twentyClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.twenties++;
+
+        this.addScore(20);
+        }
+        if (this.twenties > 2) {
+          console.log('You closed the twenties');
+        }
+      }
+      this.processThrow();
+      console.log('onHit20 twenties: ', this.twenties);
   }
-  onHit19(event)  {
+  onHit19(multiplier)  {
     if (this.throwNum <= 3 && this.nineteenClosed === false) {
-      this.nineteens++;
+      for (let i = 0; i < multiplier; i++) {
+        this.nineteens++;
+
       this.addScore(19);
+      }
     }
     this.processThrow();
   }
-  onHit18(event)  {
+  onHit18(multiplier)  {
     if (this.throwNum <= 3 && this.eighteenClosed === false) {
-      this.eighteens++;
-      this.addScore(18);
+      for (let i = 0; i < multiplier; i++) {
+        this.eighteens++;
+        this.addScore(18);
+      }
     }
     this.processThrow();
   }
-  onHit17(event)  {
+  onHit17(multiplier)  {
     if (this.throwNum <= 3 && this.seventeenClosed === false) {
-      this.seventeens++;
-      this.addScore(17);
+      for (let i = 0; i < multiplier; i++) {
+        this.seventeens++;
+        this.addScore(17);
+      }
     }
     this.processThrow();
   }
-  onHit16(event)  {
+  onHit16(multiplier)  {
     if (this.throwNum <= 3 && this.sixteenClosed === false) {
-      this.sixteens++;
-      this.addScore(16);
+      for (let i = 0; i < multiplier; i++) {
+        this.sixteens++;
+        this.addScore(16);
+      }
     }
     this.processThrow();
   }
-  onHit15(event)  {
+  onHit15(multiplier)  {
     if (this.throwNum <= 3 && this.fifteenClosed === false) {
-      this.fifteens++;
-      this.addScore(15);
+      for (let i = 0; i < multiplier; i++) {
+        this.fifteens++;
+        this.addScore(15);
+      }
     }
-    this.processThrow();
-  }
-  onHitBullseye(event)  {
-    if (this.throwNum <= 3 && this.bullseyeClosed === false) {
-      this.bullseyes++;
-      this.addScore(25);
+        this.processThrow();
     }
-    this.processThrow();
-  }
-  onMiss(event)  {
+  onHitBullseye(multiplier) {
+        if (this.throwNum <= 3 && this.bullseyeClosed === false) {
+          for (let i = 0; i < multiplier; i++) {
+
+            this.bullseyes++;
+            this.addScore(25);
+          }
+          this.processThrow();
+        }
+      }
+  onMiss(multiplier)  {
     if (this.throwNum <= 3) {
       this.addScore(0);
     }
@@ -211,6 +238,7 @@ export class HomeComponent implements OnInit {
     }  else {
       this.moreDarts = false;
     }
+    this.makeSingle();
   }
 
   addScore(num)  {
