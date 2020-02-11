@@ -52,20 +52,20 @@ export class HomeComponent implements OnInit {
   sixteens = 0;
   fifteens = 0;
   bullseyes = 0;
-
+  multiplier = 1;
   showSingles = true;
   showDoubles = false;
   showTriples = false;
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (event.key === '1') {this.onHit20(20); }
-    else if (event.key === '2' )  {this.onHit19(19); }
-    else if (event.key === '3' )  {this.onHit18(18); }
-    else if (event.key === '4' )  {this.onHit17(17); }
-    else if (event.key === '5' )  {this.onHit16(16); }
-    else if (event.key === '6' )  {this.onHit15(15); }
-    else if (event.key === '7' )  {this.onHitBullseye(25); }
+    if (event.key === '1') {this.onHit20(this.multiplier); }
+    else if (event.key === '2' )  {this.onHit19(this.multiplier); }
+    else if (event.key === '3' )  {this.onHit18(this.multiplier); }
+    else if (event.key === '4' )  {this.onHit17(this.multiplier); }
+    else if (event.key === '5' )  {this.onHit16(this.multiplier); }
+    else if (event.key === '6' )  {this.onHit15(this.multiplier); }
+    else if (event.key === '7' )  {this.onHitBullseye(this.multiplier); }
     else if (event.key === 'p' )  {this.onPrevPlayer(); }
     else if (event.key === 'n' )  {this.onNextPlayer(); }
     else if (event.key === '0' )  {this.onMiss(0); }
@@ -131,18 +131,21 @@ export class HomeComponent implements OnInit {
   }
 
   makeSingle() {
+    this.multiplier = 1;
     this.showSingles = true;
     this.showDoubles = false;
     this.showTriples = false;
   }
 
   makeDouble() {
+    this.multiplier = 2;
     this.showSingles = false;
     this.showDoubles = true;
     this.showTriples = false;
   }
 
   makeTriple() {
+    this.multiplier = 3;
     this.showSingles = false;
     this.showDoubles = false;
     this.showTriples = true;
