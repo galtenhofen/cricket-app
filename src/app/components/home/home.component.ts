@@ -4,6 +4,7 @@ import {CricketPlayer} from '../../models/cricket-player';
 import {CricketTeam} from '../../models/cricket-team';
 import {CricketRound} from '../../models/cricket-round';
 import {CricketGame} from '../../models/cricket-game';
+import {CricketTeamGame} from '../../models/cricket-team-game';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +12,33 @@ import {CricketGame} from '../../models/cricket-game';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  playerOne: CricketPlayer;
+  playerTwo: CricketPlayer;
+  playerThree: CricketPlayer;
+  playerFour: CricketPlayer;
+
+  homeTeam: CricketTeam;
+  awayTeam: CricketTeam;
+
+  teams: CricketTeam[] = [];
+  homeTeamGame: CricketTeamGame;
+  awayTeamGame: CricketTeamGame;
+  currentRound: CricketRound;
   key: any;
   gameStarted = false;
-  playerList;
-  currentPlayer: string;
+  playerList: CricketPlayer[] = [];
+  playerIdList: number[] = [];
+  currentPlayer: CricketPlayer;
+  currentPlayerId: number;
   playerIterator = 0;
+  playerIdIterator = 0;
   roundNumber = 1;
   throwNum = 1;
- /* dartOne;
+  dartOne;
   dartTwo;
-  dartThree;*/
+  dartThree;
   moreDarts = true;
-  twentyClosed = false;
+ twentyClosed = false;
   nineteenClosed = false;
   eighteenClosed = false;
   seventeenClosed = false;
@@ -43,53 +59,55 @@ export class HomeComponent implements OnInit {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if(event.key === '1'){this.onHit20(20)}
-    else if (event.key === '2' )  {this.onHit19(19)}
-    else if (event.key === '3' )  {this.onHit18(18)}
-    else if (event.key === '4' )  {this.onHit17(17)}
-    else if (event.key === '5' )  {this.onHit16(16)}
-    else if (event.key === '6' )  {this.onHit15(15)}
-    else if (event.key === '7' )  {this.onHitBullseye(25)}
-    else if (event.key === 'p' )  {this.onPrevPlayer()}
-    else if (event.key === 'n' )  {this.onNextPlayer()}
-    else if (event.key === '0' )  {this.onMiss(0)}
-    else if (event.key === 's' )  {this.makeSingle()}
-    else if (event.key === 'd' )  {this.makeDouble()}
-    else if (event.key === 't' )  {this.makeTriple()}
-   /* else if(event.key == "59" ){this.onButtonPress(9)}
-    else if(event.key == "60" ){this.onButtonPress(10)}
-    else if(event.key == "75" ){this.onButtonPress(11)}
-    else if(event.key == "76" ){this.onButtonPress(12)}
-    else if(event.key == "77" ){this.onButtonPress(13)}
-    else if(event.key == "78" ){this.onButtonPress(14)}
-    else if(event.key == "79" ){this.onButtonPress(15)}
-    else if(event.key == "80" ){this.onButtonPress(16)}
-    else if(event.key == "81" ){this.onButtonPress(17)}
-    else if(event.key == "82" ){this.onButtonPress(18)}
-    else if(event.key == "83" ){this.onButtonPress(19)}
-    else if(event.key == "84" ){this.onButtonPress(20)}
-    else if(event.key == "85" ){this.onButtonPress(25)}
-    else if(event.key == "86" ){this.onButtonPress(50)}
-    else if(event.key == "87" ){this.onButtonPress(0)}
-    else if(event.key == "88" ){this.onButtonPress(0)}
-    else if(event.key == "89" ){this.onButtonPress(0)}
-    else if(event.key == "90"){this.onButtonPress(0)}*/
+    if (event.key === '1') {this.onHit20(20); }
+    else if (event.key === '2' )  {this.onHit19(19); }
+    else if (event.key === '3' )  {this.onHit18(18); }
+    else if (event.key === '4' )  {this.onHit17(17); }
+    else if (event.key === '5' )  {this.onHit16(16); }
+    else if (event.key === '6' )  {this.onHit15(15); }
+    else if (event.key === '7' )  {this.onHitBullseye(25); }
+    else if (event.key === 'p' )  {this.onPrevPlayer(); }
+    else if (event.key === 'n' )  {this.onNextPlayer(); }
+    else if (event.key === '0' )  {this.onMiss(0); }
+    else if (event.key === 's' )  {this.makeSingle(); }
+    else if (event.key === 'd' )  {this.makeDouble(); }
+    else if (event.key === 't' )  {this.makeTriple(); }
+    else if (event.key === 'u' )  {this.undoThrow(); }
+    else if (event.key === 'i' )  {this.undoTurn(); }
   }
 
   constructor(public dataService: DataService) { }
   ngOnInit() {
-    const cricketGame = new CricketGame();
-    const teamOne = new CricketTeam(1,'The Donnybrooks',1,2);
-    const teamTwo = new CricketTeam(2, 'Merica',3,4);
-    const playerOne = new CricketPlayer('Gabe', 'Altenhofen', 1,1)
-    const playerTwo = new CricketPlayer('Luke', 'Lorenz', 2,1)
-    const playerThree = new CricketPlayer('Paul', 'Loftis', 3,2)
-    const playerFour = new CricketPlayer('Bryan', 'Swalley', 4,2)
+    this.playerOne = new CricketPlayer('Gabe', 'Altenhofen', 1, 1);
+    this.playerTwo = new CricketPlayer('Luke', 'Lorenz', 2, 1);
+    this.playerThree = new CricketPlayer('Paul', 'Loftis', 3, 2);
+    this.playerFour = new CricketPlayer('Bryan', 'Swalley', 4, 2);
+    this.homeTeam = new CricketTeam(1, 'The Donnybrooks', this.playerOne, this.playerTwo, true);
+    this.awayTeam = new CricketTeam(2, 'Merica', this.playerThree, this.playerFour, false);
+    // this.teams = [this.awayTeam, this.homeTeam]
 
-   this.playerList = ['Gabe', 'Paul', 'Luke', 'Bryan'];
-    this.currentPlayer = this.playerList[this.playerIterator];
-    console.log('teamOne: ', teamOne);
-    console.log('playerOne: ', playerOne);
+    this.awayTeamGame = new CricketTeamGame(this.awayTeam);
+    this.homeTeamGame = new CricketTeamGame(this.homeTeam);
+  }
+
+  /*getPlayerList(cricketGame) {
+    const self = this;
+    cricketGame.teams.forEach(function(item) {
+      self.playerList.push(item.playerOne);
+      self.playerIdList.push(item.playerOne.playerId);
+    });
+    cricketGame.teams.forEach(function(item) {
+      self.playerList.push(item.playerTwo);
+      self.playerIdList.push(item.playerTwo.playerId);
+    });
+    console.log('playerIdlist: ', this.playerIdList);
+  }*/
+
+  getPlayerList(awayTeam, HomeTeam) {
+    this.playerList.push(this.awayTeamGame.team.playerOne);
+    this.playerList.push(this.homeTeamGame.team.playerOne);
+    this.playerList.push(this.awayTeamGame.team.playerTwo);
+    this.playerList.push(this.homeTeamGame.team.playerTwo);
   }
 
   onButtonPress(value) {
@@ -98,25 +116,33 @@ export class HomeComponent implements OnInit {
   start(event) {
     this.gameStarted = true;
     this.setOrder();
+    this.startNewRound();
   }
 
-  setOrder(){
-
+  setOrder() {
+    this.getPlayerList(this.awayTeamGame, this.homeTeamGame);
+    this.currentPlayer = this.playerList[this.playerIterator];
+    this.currentPlayerId = this.playerIdList[this.playerIdIterator];
   }
 
-  makeSingle(){
+  startNewRound() {
+  this.currentRound = new CricketRound(this.currentPlayer.playerId, this.currentPlayer.teamId);
+  console.log('currentRound: ', this.currentRound);
+  }
+
+  makeSingle() {
     this.showSingles = true;
     this.showDoubles = false;
     this.showTriples = false;
   }
 
-  makeDouble(){
+  makeDouble() {
     this.showSingles = false;
     this.showDoubles = true;
     this.showTriples = false;
   }
 
-  makeTriple(){
+  makeTriple() {
     this.showSingles = false;
     this.showDoubles = false;
     this.showTriples = true;
@@ -133,6 +159,7 @@ export class HomeComponent implements OnInit {
     }
     this.moreDarts = true;
       this.throwNum = 1;
+    this.startNewRound();
   }
 
   onPrevPlayer() {
@@ -154,76 +181,225 @@ export class HomeComponent implements OnInit {
       this.throwNum = 1;
    // }
 }
-  onHit20(multiplier) {
-      if (this.throwNum <= 3 && this.twentyClosed === false) {
-        for (let i = 0; i < multiplier; i++) {
-          this.twenties++;
 
-        this.addScore(20);
+  undoThrow() {}
+  undoTurn() {}
+
+  getCurrentTeam(){
+  }
+
+  onHit20(multiplier) {
+    if (this.currentRound.teamId === this.awayTeamGame.team.teamId) { 
+      if (this.throwNum <= 3 && this.awayTeamGame.twentyClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.awayTeamGame.twenties++;
+
+          this.addScore(20);
         }
-        if (this.twenties > 2) {
+        if (this.awayTeamGame.twenties > 2) {
           console.log('You closed the twenties');
         }
       }
       this.processThrow();
-      console.log('onHit20 twenties: ', this.twenties);
-  }
-  onHit19(multiplier)  {
-    if (this.throwNum <= 3 && this.nineteenClosed === false) {
-      for (let i = 0; i < multiplier; i++) {
-        this.nineteens++;
+      console.log('Away Team twenties: ', this.awayTeamGame.twenties);
+    }
+    else if (this.currentRound.teamId === this.homeTeamGame.team.teamId) { 
+      if (this.throwNum <= 3 && this.homeTeamGame.twentyClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.homeTeamGame.twenties++;
 
-      this.addScore(19);
-      }
-    }
-    this.processThrow();
-  }
-  onHit18(multiplier)  {
-    if (this.throwNum <= 3 && this.eighteenClosed === false) {
-      for (let i = 0; i < multiplier; i++) {
-        this.eighteens++;
-        this.addScore(18);
-      }
-    }
-    this.processThrow();
-  }
-  onHit17(multiplier)  {
-    if (this.throwNum <= 3 && this.seventeenClosed === false) {
-      for (let i = 0; i < multiplier; i++) {
-        this.seventeens++;
-        this.addScore(17);
-      }
-    }
-    this.processThrow();
-  }
-  onHit16(multiplier)  {
-    if (this.throwNum <= 3 && this.sixteenClosed === false) {
-      for (let i = 0; i < multiplier; i++) {
-        this.sixteens++;
-        this.addScore(16);
-      }
-    }
-    this.processThrow();
-  }
-  onHit15(multiplier)  {
-    if (this.throwNum <= 3 && this.fifteenClosed === false) {
-      for (let i = 0; i < multiplier; i++) {
-        this.fifteens++;
-        this.addScore(15);
-      }
-    }
-        this.processThrow();
-    }
-  onHitBullseye(multiplier) {
-        if (this.throwNum <= 3 && this.bullseyeClosed === false) {
-          for (let i = 0; i < multiplier; i++) {
-
-            this.bullseyes++;
-            this.addScore(25);
-          }
-          this.processThrow();
+          this.addScore(20);
+        }
+        if (this.homeTeamGame.twenties > 2) {
+          console.log('You closed the twenties');
         }
       }
+      this.processThrow();
+      console.log('onHit20 twenties: ', this.homeTeamGame.twenties);
+    }
+  }
+  onHit19(multiplier) {
+    if (this.currentRound.teamId === this.awayTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.awayTeamGame.nineteenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.awayTeamGame.nineteens++;
+
+          this.addScore(20);
+        }
+        if (this.awayTeamGame.nineteens > 2) {
+          console.log('You closed the nineteens');
+        }
+      }
+      this.processThrow();
+      console.log('Away Team nineteens: ', this.awayTeamGame.nineteens);
+    }
+    else if (this.currentRound.teamId === this.homeTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.homeTeamGame.nineteenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.homeTeamGame.nineteens++;
+
+          this.addScore(20);
+        }
+        if (this.homeTeamGame.nineteens > 2) {
+          console.log('You closed the nineteens');
+        }
+      }
+      this.processThrow();
+      console.log('onHit20 nineteens: ', this.homeTeamGame.nineteens);
+    }
+  }
+
+  onHit18(multiplier) {
+    if (this.currentRound.teamId === this.awayTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.awayTeamGame.eighteenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.awayTeamGame.eighteens++;
+
+          this.addScore(20);
+        }
+        if (this.awayTeamGame.eighteens > 2) {
+          console.log('You closed the eighteens');
+        }
+      }
+      this.processThrow();
+      console.log('Away Team eighteens: ', this.awayTeamGame.eighteens);
+    }
+    else if (this.currentRound.teamId === this.homeTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.homeTeamGame.eighteenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.homeTeamGame.eighteens++;
+
+          this.addScore(20);
+        }
+        if (this.homeTeamGame.eighteens > 2) {
+          console.log('You closed the eighteens');
+        }
+      }
+      this.processThrow();
+      console.log('onHit20 eighteens: ', this.homeTeamGame.eighteens);
+    }
+  }
+
+  onHit17(multiplier) {
+    if (this.currentRound.teamId === this.awayTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.awayTeamGame.seventeenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.awayTeamGame.seventeens++;
+
+          this.addScore(20);
+        }
+        if (this.awayTeamGame.seventeens > 2) {
+          console.log('You closed the seventeens');
+        }
+      }
+      this.processThrow();
+      console.log('Away Team seventeens: ', this.awayTeamGame.seventeens);
+    }
+    else if (this.currentRound.teamId === this.homeTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.homeTeamGame.seventeenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.homeTeamGame.seventeens++;
+
+          this.addScore(20);
+        }
+        if (this.homeTeamGame.seventeens > 2) {
+          console.log('You closed the seventeens');
+        }
+      }
+      this.processThrow();
+      console.log('onHit20 seventeens: ', this.homeTeamGame.seventeens);
+    }
+  }
+  onHit16(multiplier) {
+    if (this.currentRound.teamId === this.awayTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.awayTeamGame.sixteenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.awayTeamGame.sixteens++;
+
+          this.addScore(20);
+        }
+        if (this.awayTeamGame.sixteens > 2) {
+          console.log('You closed the sixteens');
+        }
+      }
+      this.processThrow();
+      console.log('Away Team sixteens: ', this.awayTeamGame.sixteens);
+    }
+    else if (this.currentRound.teamId === this.homeTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.homeTeamGame.sixteenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.homeTeamGame.sixteens++;
+
+          this.addScore(20);
+        }
+        if (this.homeTeamGame.sixteens > 2) {
+          console.log('You closed the sixteens');
+        }
+      }
+      this.processThrow();
+      console.log('onHit20 sixteens: ', this.homeTeamGame.sixteens);
+    }
+  }
+  onHit15(multiplier) {
+    if (this.currentRound.teamId === this.awayTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.awayTeamGame.fifteenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.awayTeamGame.fifteens++;
+
+          this.addScore(20);
+        }
+        if (this.awayTeamGame.fifteens > 2) {
+          console.log('You closed the fifteens');
+        }
+      }
+      this.processThrow();
+      console.log('Away Team fifteens: ', this.awayTeamGame.fifteens);
+    }
+    else if (this.currentRound.teamId === this.homeTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.homeTeamGame.fifteenClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.homeTeamGame.fifteens++;
+
+          this.addScore(20);
+        }
+        if (this.homeTeamGame.fifteens > 2) {
+          console.log('You closed the fifteens');
+        }
+      }
+      this.processThrow();
+      console.log('onHit20 fifteens: ', this.homeTeamGame.fifteens);
+    }
+  }
+  onHitBullseye(multiplier) {
+    if (this.currentRound.teamId === this.awayTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.awayTeamGame.bullseyeClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.awayTeamGame.bullseyes++;
+
+          this.addScore(20);
+        }
+        if (this.awayTeamGame.bullseyes > 2) {
+          console.log('You closed the bullseyes');
+        }
+      }
+      this.processThrow();
+      console.log('Away Team bullseyes: ', this.awayTeamGame.bullseyes);
+    }
+    else if (this.currentRound.teamId === this.homeTeamGame.team.teamId) {
+      if (this.throwNum <= 3 && this.homeTeamGame.bullseyeClosed === false) {
+        for (let i = 0; i < multiplier; i++) {
+          this.homeTeamGame.bullseyes++;
+
+          this.addScore(20);
+        }
+        if (this.homeTeamGame.bullseyes > 2) {
+          console.log('You closed the bullseyes');
+        }
+      }
+      this.processThrow();
+      console.log('onHit20 bullseyes: ', this.homeTeamGame.bullseyes);
+    }
+  }
   onMiss(multiplier)  {
     if (this.throwNum <= 3) {
       this.addScore(0);

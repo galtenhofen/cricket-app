@@ -7,7 +7,7 @@
   <div class="col-head-right" *ngIf="gameStarted===true"><H1>Team 2</H1></div>
 
   <div class="col-head-middle">
-    <H1 *ngIf="gameStarted===true && moreDarts" >{{ currentPlayer }}: Throw {{ throwNum }} </H1>
+    <H1 *ngIf="gameStarted===true && moreDarts" >{{ currentPlayer.firstName }}: Throw {{ throwNum }} </H1>
     <H2 *ngIf="gameStarted===true && !moreDarts" >Hit Next Player to Continue </H2>
     <!--<H2 *ngIf="gameStarted===true && moreDarts" ></H2>-->
   </div>
@@ -18,47 +18,47 @@
       <button *ngIf="gameStarted===true" [hidden]="" class="btn btn-lg btn-warning hit-btn" id="fake-button" > </button>
       <div *ngIf="gameStarted===true" class="btn-group-vertical btn-group-ctr">
         <div class="container hits">
-          <img class="hits-img" [hidden]="twenties!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="twenties!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="twenties!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="twenties<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.twenties!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.twenties!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.twenties!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.twenties<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
 
         <div class="container hits">
-          <img class="hits-img" [hidden]="nineteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="nineteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="nineteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="nineteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.nineteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.nineteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.nineteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.nineteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img" [hidden]="eighteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="eighteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="eighteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="eighteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.eighteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.eighteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.eighteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.eighteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img" [hidden]="seventeens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="seventeens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="seventeens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="seventeens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.seventeens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.seventeens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.seventeens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.seventeens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img" [hidden]="sixteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="sixteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="sixteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="sixteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.sixteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.sixteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.sixteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.sixteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img" [hidden]="fifteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="fifteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="fifteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img"  [hidden]="fifteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.fifteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.fifteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.fifteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img"  [hidden]="awayTeamGame.fifteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img"  [hidden]="bullseyes!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="bullseyes!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="bullseyes!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="bullseyes<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img"  [hidden]="awayTeamGame.bullseyes!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.bullseyes!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.bullseyes!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="awayTeamGame.bullseyes<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
        </div>
     </div>
@@ -69,47 +69,47 @@
       <button *ngIf="gameStarted===true" [hidden]="" class="btn btn-lg btn-warning hit-btn" id="fake-button2" > </button>
       <div *ngIf="gameStarted===true" class="btn-group-vertical btn-group-ctr">
         <div class="container hits">
-          <img class="hits-img" [hidden]="twenties!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="twenties!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="twenties!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="twenties<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.twenties!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.twenties!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.twenties!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.twenties<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
 
         <div class="container hits">
-          <img class="hits-img" [hidden]="nineteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="nineteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="nineteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="nineteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.nineteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.nineteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.nineteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.nineteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img" [hidden]="eighteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="eighteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="eighteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="eighteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.eighteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.eighteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.eighteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.eighteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img" [hidden]="seventeens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="seventeens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="seventeens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="seventeens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.seventeens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.seventeens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.seventeens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.seventeens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img" [hidden]="sixteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="sixteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="sixteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="sixteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.sixteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.sixteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.sixteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.sixteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img" [hidden]="fifteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="fifteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="fifteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img"  [hidden]="fifteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.fifteens!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.fifteens!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.fifteens!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img"  [hidden]="homeTeamGame.fifteens<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
         <div class="container hits">
-          <img class="hits-img"  [hidden]="bullseyes!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="bullseyes!=1" src="../../../assets/1 one.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="bullseyes!=2" src="../../../assets/2 two.png" height="70" width="67"/>
-          <img class="hits-img" [hidden]="bullseyes<3" src="../../../assets/3 three.png" height="70" width="67"/>
+          <img class="hits-img"  [hidden]="homeTeamGame.bullseyes!=0" src="../../../assets/0 zero.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.bullseyes!=1" src="../../../assets/1 one.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.bullseyes!=2" src="../../../assets/2 two.png" height="70" width="67"/>
+          <img class="hits-img" [hidden]="homeTeamGame.bullseyes<3" src="../../../assets/3 three.png" height="70" width="67"/>
         </div>
       </div>
     </div>

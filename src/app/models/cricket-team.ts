@@ -1,15 +1,18 @@
+import { CricketPlayer } from './cricket-player';
 
 export class CricketTeam {
   teamId: number;
   teamName: string;
-  playerId1: number;
-  playerId2: number;
+  playerOne: CricketPlayer;
+  playerTwo: CricketPlayer;
+  retribution: boolean;
 
-  constructor(teamId, teamName, player1, player2){
+  constructor(teamId, teamName, player1, player2, retribution){
     this.teamId = teamId;
     this.teamName = teamName;
-    this.playerId1 = player1;
-    this.playerId2 = player2;
+    this.playerOne = player1;
+    this.playerTwo = player2;
+    this.retribution = retribution;
   }
 }
 
