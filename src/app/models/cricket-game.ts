@@ -1,8 +1,17 @@
 import {CricketRound} from './cricket-round';
+import {CricketPlayer} from './cricket-player';
 
 export class CricketGame {
+  player: CricketPlayer;
   rounds: CricketRound[];
   bibs: number;
+  twenties: number;
+  nineteens: number;
+  eighteens: number;
+  seventeens: number;
+  sixteens: number;
+  fifteens: number;
+  bullseyes: number;
   twentyClosed: boolean;
   nineteenClosed: boolean;
   eighteenClosed: boolean;
@@ -13,8 +22,16 @@ export class CricketGame {
   isActive: boolean;
   isWinner: boolean;
 
-  constructor() {
+  constructor(player) {
+    this.player = player;
     this.rounds = [];
+    this.twenties = 0;
+    this.nineteens = 0;
+    this.eighteens = 0;
+    this.seventeens = 0;
+    this.sixteens = 0;
+    this.fifteens = 0;
+    this.bullseyes = 0;
     this.twentyClosed = false;
     this.nineteenClosed = false;
     this.eighteenClosed = false;
@@ -26,5 +43,5 @@ export class CricketGame {
     this.isActive = false;
     this.isWinner = false;
   }
-}
 
+}

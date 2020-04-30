@@ -21,38 +21,37 @@
   justify-content: center;
 }
 
-.hit-btn{
+/*.hit-btn{
   margin-bottom: 10px;
-}
+}*/
 
 .hits-img{
   margin-bottom: 8px;
 }
 
-/*#miss-button{
-borger-radius: 10px!important;
- font-size:16px;
- width: 30%!important;
-  margin-left:2px;
-  margin-right:2px;
- }
- */
+
+.btn-group-horizontal{
+width: 100%;
+}
 
 .multiplier{
-  borger-radius: 10px!important;
-  font-size:24px;
+  border-radius: 10px!important;
+  font-size:18px;
   width: 30%!important;
-  height: 100%!important;
-  padding:0px!important;
+  height: 60%!important;
+  margin:0px 10px;
+  padding-bottom: 5px;
 }
 
 #next-button{
-  margin-top: 30px;
+  height: 50%;
+  margin-top: 50px;
   margin-left: 5px;
 }
 
 #prev-button{
-  margin-top: 30px;
+  height: 50%;
+  margin-top: 50px;
   margin-right: 5px;
 }
 
@@ -73,11 +72,25 @@ borger-radius: 10px!important;
   background-color: white!important;
 }
 
-.round-bar{
+.col-top-left{
+  font-family: "Comic Sans MS" ;
+  font-size: 3rem;
+   grid-area: infobar1;
+ }
+
+.col-top-right{
+  grid-area: infobar3;
+}
+
+.col-top-middle{
+  font-family: "Comic Sans MS" ;
+  font-size: 3rem;
   grid-area: infobar2;
 }
 
 .col-head-left{
+  font-family: "Comic Sans MS" ;
+  font-size: 3.1rem;
   grid-area: colhead1
 }
 
@@ -86,39 +99,140 @@ borger-radius: 10px!important;
 }
 
 .col-head-right{
+  font-family: "Comic Sans MS" ;
+  font-size: 3.1rem;
   grid-area: colhead3
 }
 
-.col-body-right{
+.REPLACE-col-body-right{
   grid-area: colarea3;
   text-align: center;
 }
 
-.col-body-left{
+.REPLACE-col-body-left{
   grid-area: colarea1;
   text-align: center;
 }
 
-.col-body-middle{
+.REPLACE-col-body-middle{
   grid-area: colarea2;
+  text-align: center;
+}
+.cell-left-1{
+  grid-area: colarea11;
+  text-align: center;
+}
+.cell-left-2{
+  grid-area: colarea12;
+  text-align: center;
+}
+.cell-left-3{
+  grid-area: colarea13;
+  text-align: center;
+}
+.cell-left-4{
+  grid-area: colarea14;
+  text-align: center;
+}
+.cell-left-5{
+  grid-area: colarea15;
+  text-align: center;
+}
+.cell-left-6{
+  grid-area: colarea16;
+  text-align: center;
+}
+.cell-left-7{
+  grid-area: colarea17;
+  text-align: center;
+}
+.cell-left-8{
+  grid-area: colarea18;
+  text-align: center;
+}
+
+.cell-middle-1{
+  grid-area: colarea21;
+  text-align: center;
+  /*display: flex;
+  align-items: center;*/
+}
+.cell-middle-2{
+  grid-area: colarea22;
+  text-align: center;
+}
+.cell-middle-3{
+  grid-area: colarea23;
+  text-align: center;
+}
+.cell-middle-4{
+  grid-area: colarea24;
+  text-align: center;
+}
+.cell-middle-5{
+  grid-area: colarea25;
+  text-align: center;
+}
+.cell-middle-6{
+  grid-area: colarea26;
+  text-align: center;
+}
+.cell-middle-7{
+  grid-area: colarea27;
+  text-align: center;
+}
+.cell-middle-8{
+  grid-area: colarea28;
+  text-align: center;
+}
+.cell-right-1{
+  grid-area: colarea31;
+  text-align: center;
+}
+.cell-right-2{
+  grid-area: colarea32;
+  text-align: center;
+}
+.cell-right-3{
+  grid-area: colarea33;
+  text-align: center;
+}
+.cell-right-4{
+  grid-area: colarea34;
+  text-align: center;
+}
+.cell-right-5{
+  grid-area: colarea35;
+  text-align: center;
+}
+.cell-right-6{
+  grid-area: colarea36;
+  text-align: center;
+}
+.cell-right-7{
+  grid-area: colarea37;
+  text-align: center;
+}
+.cell-right-8{
+  grid-area: colarea38;
   text-align: center;
 }
 
 .container-fluid{
   display:grid;
   grid-template-columns: 30% auto 30%;
-  grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: 5% 5% 11% 11% 11% 11% 11% 11% 11% 11%;
   grid-template-areas:
     "infobar1 infobar2 infobar3"
     "colhead1 colhead2 colhead3"
-    "colarea1 colarea2 colarea3"
-    "colarea1 colarea2 colarea3"
-    "colarea1 colarea2 colarea3"
-    "colarea1 colarea2 colarea3"
-    "colarea1 colarea2 colarea3"
-    "colarea1 colarea2 colarea3"
-    "colarea1 colarea2 colarea3"
-    "colarea1 colarea2 colarea3"
+    "colarea11 colarea21 colarea31"
+    "colarea12 colarea22 colarea32"
+    "colarea13 colarea23 colarea33"
+    "colarea14 colarea24 colarea34"
+    "colarea15 colarea25 colarea35"
+    "colarea16 colarea26 colarea36"
+    "colarea17 colarea27 colarea37"
+    "colarea18 colarea28 colarea38"
 ;
 
 }
@@ -135,6 +249,49 @@ borger-radius: 10px!important;
   text-align: center;
 }
 
+.btn-number.btn-xl {
+  width: 100%;
+  font-size: 120px;
+  text-align: center;
+  height: 150px;
+  line-height: 150px;
+  white-space: nowrap;
+  /*width: 400px;
+  height: 150px;
+  padding: 10px 0px;
+  font-size: 120px;
+  text-align: center;*/
+}
+
 .btn-group-vertical{
   align-items: center!important;
+}
+.multi-warn{
+  width: 95%;
+  height: 90%;
+  padding: 0px;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 0px !important;
+  border: 0px;
+}
+.warn-double{
+  background-image: url("../../../assets/double_background.png");
+}
+
+.warn-triple{
+ background-image: url("../../../assets/triple_background.png");
+}
+
+.font-class{
+  font-family: "Comic Sans MS" ;
+  font-size: 4rem;
+}
+.font-class-double{
+  font-family: "Comic Sans MS" ;
+  font-size: 4rem;
+}
+.font-class-triple{
+  font-family: "Comic Sans MS" ;
+  font-size: 4rem;
 }

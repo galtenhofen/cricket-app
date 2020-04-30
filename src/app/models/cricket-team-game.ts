@@ -1,9 +1,9 @@
-import {CricketRound} from './cricket-round';
+import {CricketRoundTeam} from './cricket-round-team';
 import {CricketTeam} from './cricket-team';
 
 export class CricketTeamGame {
   team: CricketTeam;
-  rounds: CricketRound[];
+  rounds: CricketRoundTeam[];
   bibs: number;
   twenties: number;
   nineteens: number;

@@ -2,10 +2,11 @@
 /*@import "~bootstrap/dist/css/bootstrap.css";*/
 
 html {
-  min-height: calc(100% - 10px);
+  /*min-height: calc(100% - 10px);*/
+  height:95%;
   overflow: hidden;
 }
 
 body {
-  height: calc(100% - 10px);
+  height:100%;
 }
